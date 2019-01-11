@@ -5,8 +5,8 @@ class State {
     this._isAcceptable = false;
   }
 
-  transitStates(_transitStates) {
-    this._transitStates = _transitStates;
+  transitStates(transitStates) {
+    this._transitStates = transitStates;
   }
 
   transitionExists(alphabet) {
