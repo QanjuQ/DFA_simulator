@@ -32,7 +32,7 @@ class Machine {
   }
 
   run(input) {
-    `${input}`.split('').forEach(this.transit.bind(this));
+    input.forEach(this.transit.bind(this));
     return this.getState(this._currentState).isAcceptable();
   }
 }

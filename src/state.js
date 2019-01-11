@@ -1,8 +1,8 @@
 class State {
-  constructor (name) {
-    this._transitStates = {};
+  constructor (name, transits = {}, acceptable = false) {
+    this._transitStates = transits;
     this.name = name;
-    this._isAcceptable = false;
+    this._isAcceptable = acceptable;
   }
 
   transitStates(transitStates) {

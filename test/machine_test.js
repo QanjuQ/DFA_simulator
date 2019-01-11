@@ -83,11 +83,11 @@ describe("Machine", () => {
     });
 
     it("Should return true when input is accepted", () => {
-      chai.assert.isTrue(machine.run('0000'));
+      chai.assert.isTrue(machine.run(['0', '0', '0', '0']));
     });
 
     it("Should return false when input is rejected", () => {
-      chai.assert.isFalse(machine.run('1000'));
+      chai.assert.isFalse(machine.run(['1', '0', '0', '0']));
     });
   });
 });
