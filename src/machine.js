@@ -31,8 +31,9 @@ class Machine {
     return this.states.filter((state) => (state.name == name))[0];
   }
 
-  run() {
-
+  run(input) {
+    `${input}`.split('').forEach(this.transit.bind(this));
+    return this.getState(this._currentState).isAcceptable();
   }
 }
 

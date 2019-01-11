@@ -77,7 +77,34 @@ describe("Machine", () => {
       chai.assert.isUndefined(machine.getState('q0'));
     });
   });
-  describe("run", () => {
-
+  describe("Should return true when input is accepted", () => {
+    let q0 = new State('q0');
+    q0.addTransitState(0, 'q0');
+    q0.addTransitState(1, 'q1');
+    q0.makeAcceptable();
+    let q1 = new State('q1');
+    q1.addTransitState(0, 'q1');
+    q1.addTransitState(1, 'q1');
+    let machine = new Machine();
+    machine.addState(q0);
+    machine.addState(q1);
+    machine.initialState('q0');
+    console.log(machine);
+    chai.assert.isTrue(machine.run('0000'));
   });
+  describe("Should return true when input is accepted", () => {
+    let q0 = new State('q0');
+    q0.addTransitState(0, 'q0');
+    q0.addTransitState(1, 'q1');
+    q0.makeAcceptable();
+    let q1 = new State('q1');
+    q1.addTransitState(0, 'q1');
+    q1.addTransitState(1, 'q1');
+    let machine = new Machine();
+    machine.addState(q0);
+    machine.addState(q1);
+    machine.initialState('q0');
+    chai.assert.isFalse(machine.run('1000'));
+  });
+
 });
