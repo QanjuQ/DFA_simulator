@@ -35,6 +35,10 @@ class Machine {
     input.forEach(this.transit.bind(this));
     return this.getState(this._currentState).isAcceptable();
   }
+
+  reset() {
+    this._currentState = this._initialState;
+  }
 }
 
 module.exports = {

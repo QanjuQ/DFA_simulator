@@ -3,18 +3,13 @@ const parser = require('./parse');
 const State = require('./src/state');
 const Machine = require('./src/machine').Machine;
 
-let alphabets;
-let states;
-let acceptableStates;
-let initialState;
-
 const readInput = () => {
-  alphabets = read("Enter the machine alphabets\n");
+  let alphabets = read("Enter the machine alphabets\n");
   alphabets = parser.parse(alphabets);
   console.log("Enter input with space character as delimiter.");
-  states = read("Enter the states your DFA has\n").split(' ');
-  acceptableStates = read("Enter the acceptable states your DFA has.\n").split(' ');
-  initialState = read("Enter the initial state in your DFA.\n");
+  let states = read("Enter the states your DFA has\n").split(' ');
+  let acceptableStates = read("Enter the acceptable states your DFA has.\n").split(' ');
+  let initialState = read("Enter the initial state in your DFA.\n");
   return {
     alphabets, states, acceptableStates, initialState
   }
@@ -54,14 +49,13 @@ const setup = () => {
 
 const main = () => {
   let machine = setup();
-  console.log(machine);
   while (true) {
+    machine.reset();
     let input = read("Enter the string to test:  ");
     let result = machine.run(input.split(''));
     let output = { true: "accepted", false: "rejected" };
-    console.log(machine._currentState);
     console.log(`${input} got ${output[result]}`);
   }
 };
 
-main();
+main(); 
